@@ -15,9 +15,9 @@
     linear-gradient(to bottom, #e7e7e7 0.01%, #1a1a1a);
   --title-font-weight: "wght" 700;
   --text-font-weight: "wght" 400;
-  --header-background: var(--page-background);
+  --header-background: var(--page-background, #fff);
   --text-color: #000;
-  --mix-blend-color: var(--page-background);
-  --stroke-color: var(--text-color);
-  --label-stroke-color: var(--page-background);
+  --mix-blend-color: var(--page-background, #fff);
+  --stroke-color: var(--text-color, #000);
+  --label-stroke-color: var(--page-background, #fff);
 }

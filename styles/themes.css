@@ -6,6 +6,9 @@
 */
 
 :root.theme-light {
+  --main-font-family: Inter, sans-serif;
+  --accent-font-family: "Press Start 2P", fantasy;
+  --sparks-color: #ff0000;
   --page-background: #fff;
   --background-color: #d3d3d3;
   --background-image: repeating-linear-gradient(
@@ -17,37 +20,16 @@
     linear-gradient(to bottom, #e7e7e7 0.01%, #1a1a1a);
   --title-font-weight: "wght" 700;
   --text-font-weight: "wght" 400;
-  --header-background: var(--page-background);
+  --header-background: var(--page-background, #fff);
   --text-color: #000;
-  --mix-blend-color: var(--page-background);
-  --stroke-color: var(--text-color);
-  --label-stroke-color: var(--page-background);
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --page-background: #fff;
-    --background-color: #d3d3d3;
-    --background-image: repeating-linear-gradient(
-        to left,
-        #d3d3d3 0 2px,
-        #d3d3d300 2px 4px
-      ),
-      repeating-linear-gradient(to bottom, #d3d3d3 0 2px, #d3d3d300 2px 4px),
-      linear-gradient(to bottom, #e7e7e7 0.01%, #1a1a1a);
-    --title-font-weight: "wght" 700;
-    --text-font-weight: "wght" 400;
-    --header-background: var(--page-background);
-    --text-color: #000;
-    --mix-blend-color: var(--page-background);
-    --stroke-color: var(--text-color);
-    --label-stroke-color: var(--page-background);
-  }
+  --mix-blend-color: var(--page-background, #fff);
+  --stroke-color: var(--text-color, #000);
+  --label-stroke-color: var(--page-background, #fff);
 }
 
 :root.theme-dark {
   --page-background: #000;
-  --background-color: var(--page-background);
+  --background-color: var(--page-background, #000);
   --background-image: repeating-linear-gradient(
       to left,
       #000000 0 2px,
@@ -57,17 +39,17 @@
     linear-gradient(to bottom, #007f0c, #004306);
   --title-font-weight: "wght" 785;
   --text-font-weight: "wght" 465;
-  --header-background: var(--page-background);
+  --header-background: var(--page-background, #000);
   --text-color: #00cc14;
-  --mix-blend-color: var(--text-color);
-  --stroke-color: var(--text-color);
-  --label-stroke-color: var(--page-background);
+  --mix-blend-color: var(--text-color, #00cc14);
+  --stroke-color: var(--text-color, #00cc14);
+  --label-stroke-color: var(--page-background, #000);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --page-background: #000;
-    --background-color: var(--page-background);
+    --background-color: var(--page-background, #000);
     --background-image: repeating-linear-gradient(
         to left,
         #000000 0 2px,
@@ -77,10 +59,10 @@
       linear-gradient(to bottom, #007f0c, #004306);
     --title-font-weight: "wght" 785;
     --text-font-weight: "wght" 465;
-    --header-background: var(--page-background);
+    --header-background: var(--page-background, #000);
     --text-color: #00cc14;
-    --mix-blend-color: var(--text-color);
-    --stroke-color: var(--text-color);
-    --label-stroke-color: var(--page-background);
+    --mix-blend-color: var(--text-color, #00cc14);
+    --stroke-color: var(--text-color, #00cc14);
+    --label-stroke-color: var(--page-background, #000);
   }
 }

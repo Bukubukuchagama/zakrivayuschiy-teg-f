@@ -17,9 +17,9 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
-  font-family: var(--main-font-family, sans-serif);
-  font-variation-settings: var(--text-font-weight);
-  color: var(--text-color);
+  font-family: var(--main-font-family, Inter, sans-serif);
+  font-variation-settings: "wght" var(--text-font-weight, 400);
+  color: var(--text-color, #000);
   background-image: var(--background-image, none);
   background-attachment: fixed;
   background-size: cover;
@@ -30,17 +30,18 @@
 .header {
   display: grid;
   justify-content: center;
-  font-family: var(--accent-font-family);
+  font-family: var(--accent-font-family, "Press Start 2P", fantasy);
   text-align: center;
   margin: 100px 0;
   padding: 136px 0 25px;
-  background: var(--header-background);
-  border: 2px solid var(--stroke-color);
+  background: var(--header-background, #fff);
+  border: 2px solid var(--stroke-color, #000);
 }
 
 .header__main-title {
   font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
   text-transform: uppercase;
+  text-decoration: none;
 }
 
 .header__title {
@@ -53,7 +54,7 @@
   font-size: 14px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 11px;
   inline-size: min-content;
   text-align: start;
   margin: 0 42.5%;
@@ -90,7 +91,7 @@
   display: block;
   inline-size: 100%;
   block-size: 2px;
-  background-color: var(--text-color);
+  background-color: var(--text-color, #000);
   opacity: 0.6;
   transition: transform 0.3s ease;
   transform: scaleX(0);
@@ -125,14 +126,15 @@
 /* labels */
 
 .image-label {
-  font-family: var(--accent-font-family);
+  font-family: var(--accent-font-family, "Press Start 2P", fantasy);
   font-size: 14px;
-  font-variation-settings: var(--text-font-weight);
+  font-variation-settings: "wght" var(--text-font-weight, 400);
   z-index: 1;
   opacity: 0.5;
   mix-blend-mode: hard-light;
-  text-shadow: -1px 0 var(--label-stroke-color), 0 1px var(--label-stroke-color),
-    1px 0 var(--label-stroke-color), 0 -1px var(--label-stroke-color);
+  text-shadow: -1px 0 var(--label-stroke-color, #fff),
+    0 1px var(--label-stroke-color, #fff), 1px 0 var(--label-stroke-color, #fff),
+    0 -1px var(--label-stroke-color, #fff);
   position: absolute;
   right: 25px;
   top: 27px;
@@ -143,12 +145,12 @@
   text-transform: uppercase;
 }
 
-@supports (-webkit-text-stroke: 1px var(--label-stroke-color)) or
-  (text-stroke: 1px var(--label-stroke-color)) {
+@supports (-webkit-text-stroke: 1px var(--label-stroke-color, #fff)) or
+  (text-stroke: 1px var(--label-stroke-color, #fff)) {
   .image-label {
     text-shadow: none;
-    -webkit-text-stroke: 1px var(--label-stroke-color);
-    text-stroke: 1px var(--label-stroke-color);
+    -webkit-text-stroke: 1px var(--label-stroke-color, #fff);
+    text-stroke: 1px var(--label-stroke-color, #fff);
   }
 }
 
@@ -163,66 +165,9 @@
 .like-icon {
   inline-size: 38px;
   block-size: 40px;
-  fill: var(--text-color);
+  fill: var(--text-color, #000);
   position: relative;
   z-index: 1;
-}
-
-.like-icon .heart {
-  transform-origin: center;
-}
-
-.like-icon .contour {
-  fill: var(--text-color);
-  transition: fill 0.1s linear;
-}
-
-.like-icon .main-body {
-  fill: var(--page-background);
-  transition: fill 0.3s linear;
-}
-
-.like-icon .core {
-  fill: var(--page-background);
-  transition: fill 0.3s linear 0.03s;
-}
-
-.like-icon .sparks {
-  opacity: 0;
-  fill: var(--sparks-color);
-}
-
-.like-icon:hover .main-body {
-  fill: var(--text-color);
-  transition: fill 0.3s linear 0.05s;
-}
-
-.like-icon:hover .core {
-  fill: var(--text-color);
-  transition: fill 0.3s linear;
-}
-
-.like-icon:active .main-body {
-  fill: var(--sparks-color);
-}
-
-.like-icon:active .core {
-  fill: var(--sparks-color);
-}
-
-.like-icon.is-liked .contour {
-  fill: var(--sparks-color);
-  transition: fill 0.3s linear 0.06s;
-}
-
-.like-icon.is-liked .main-body {
-  fill: var(--sparks-color);
-  transition: fill 0.3s linear 0.05s;
-}
-
-.like-icon.is-liked .core {
-  fill: var(--sparks-color);
-  transition: fill 0.3s linear;
 }
 
 /* filters */
@@ -258,13 +203,13 @@
 /* button */
 
 .button {
-  font-family: var(--accent-font-family);
+  font-family: var(--accent-font-family, "Press Start 2P", fantasy);
   font-size: 14px;
   position: relative;
   overflow: hidden;
-  color: var(--mix-blend-color);
+  color: var(--mix-blend-color, #fff);
   background: none;
-  border: 2px solid var(--stroke-color);
+  border: 2px solid var(--stroke-color, #000);
   cursor: pointer;
   transition: 0.5s ease-in-out;
 }
@@ -278,7 +223,7 @@
   inline-size: 100%;
   block-size: 100%;
   overflow: hidden;
-  background: var(--text-color);
+  background: var(--text-color, #000);
   transform: translateX(-100%);
   transition: transform 0.5s ease-in-out;
 }
@@ -292,42 +237,40 @@
 }
 
 .button:focus-visible {
-  box-shadow: 2px 2px 0px 0px var(--text-color);
+  box-shadow: 2px 2px 0px 0px var(--text-color, #000);
 }
 
 .button__text {
-  color: var(--mix-blend-color);
+  color: var(--mix-blend-color, #fff);
   mix-blend-mode: difference;
 }
 
 .button-save {
-  inline-size: 338px;
-  block-size: 51px;
   padding: 18.5px 21px;
   margin: 0 auto;
   display: flex;
   gap: 5px;
   align-items: center;
-  background: var(--page-background);
+  background: var(--page-background, #fff);
 }
 
 .button-confirm {
   text-transform: uppercase;
   inline-size: 100%;
   padding: 10px 0;
-  background: var(--page-background);
+  background: var(--page-background, #fff);
 }
 
 /* cards */
 
 .card {
-  border: 2px solid var(--stroke-color);
-  background: var(--header-background);
+  border: 2px solid var(--stroke-color, #000);
+  background: var(--header-background, #fff);
 }
 
 .card__title {
   font-size: 18px;
-  font-variation-settings: var(--title-font-weight);
+  font-variation-settings: "wght" var(--title-font-weight, 700);
   padding: 3.5px 10px 5.5px 10px;
   line-height: 22.78px;
   text-align: left;
@@ -346,8 +289,8 @@
 .card__image-item {
   overflow: hidden;
   position: relative;
-  border-top: 2px solid var(--stroke-color);
-  border-bottom: 2px solid var(--stroke-color);
+  border-top: 2px solid var(--stroke-color, #000);
+  border-bottom: 2px solid var(--stroke-color, #000);
 }
 
 .card__text-item {
@@ -374,18 +317,18 @@
 }
 
 .card__icon-button:focus-visible {
-  border-color: var(--stroke-color);
+  border-color: var(--stroke-color, #000);
 }
 
 .card__like-button {
-  inline-size: 130px;
-  block-size: 38px;
+  min-inline-size: 130px;
+  min-block-size: 38px;
 }
 
 .card__like-button-item {
   display: flex;
-  align-items: center;
   justify-content: end;
+  align-items: stretch;
   gap: 5px;
   padding: 25px;
 }
@@ -393,17 +336,17 @@
 /* footer-button */
 
 .footer-button {
-  margin-block-start: 52px;
-  padding-block-end: 103px;
+  margin-block-start: 50px;
+  padding-block-end: 100px;
 }
 
 .dialog {
-  font-family: var(--accent-font-family);
+  font-family: var(--accent-font-family, "Press Start 2P", fantasy);
   font-size: 14px;
   padding: 30px 26px;
-  color: var(--text-color);
-  background: var(--page-background);
-  border: 2px solid var(--stroke-color);
+  color: var(--text-color, #000);
+  background: var(--page-background, #fff);
+  border: 2px solid var(--stroke-color, #000);
 }
 
 .dialog::backdrop {
@@ -420,12 +363,6 @@
   inline-size: 39px;
   block-size: 39px;
   mix-blend-mode: normal;
-}
-
-.dialog__item {
-  display: flex;
-  flex-direction: column;
-  gap: 26px;
 }
 
 .dialog__text {
@@ -466,10 +403,6 @@
 
   .theme-menu__list {
     margin: 0 41.1%;
-  }
-
-  .dialog__item {
-    gap: 28px;
   }
 
   .dialog__text {
