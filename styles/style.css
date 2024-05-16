@@ -17,4 +17,466 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  font-family: var(--main-font-family, sans-serif);
+  font-variation-settings: var(--text-font-weight);
+  color: var(--text-color);
+  background-image: var(--background-image, none);
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+/* header */
+
+.header {
+  display: grid;
+  justify-content: center;
+  font-family: var(--accent-font-family);
+  text-align: center;
+  margin: 100px 0;
+  padding: 136px 0 25px;
+  background: var(--header-background);
+  border: 2px solid var(--stroke-color);
+}
+
+.header__main-title {
+  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+  text-transform: uppercase;
+}
+
+.header__title {
+  font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+  text-transform: uppercase;
+  margin: 20px 0 25px;
+}
+
+.theme-menu__list {
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  inline-size: min-content;
+  text-align: start;
+  margin: 0 42.5%;
+}
+
+.theme-menu__item {
+  position: relative;
+}
+
+.theme-menu__button {
+  padding: 0;
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  overflow: hidden;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.theme-menu__button:disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.theme-menu__button:disabled::before {
+  content: "▶";
+  position: absolute;
+  left: -25px;
+}
+
+.theme-menu__button::after {
+  content: "";
+  display: block;
+  inline-size: 100%;
+  block-size: 2px;
+  background-color: var(--text-color);
+  opacity: 0.6;
+  transition: transform 0.3s ease;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.theme-menu__button:hover {
+  opacity: 0.6;
+}
+
+.theme-menu__button:focus {
+  outline: none;
+  opacity: 0.6;
+}
+
+.theme-menu__button:focus-visible {
+  opacity: 0.6;
+}
+
+.theme-menu__button:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* main */
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+/* labels */
+
+.image-label {
+  font-family: var(--accent-font-family);
+  font-size: 14px;
+  font-variation-settings: var(--text-font-weight);
+  z-index: 1;
+  opacity: 0.5;
+  mix-blend-mode: hard-light;
+  text-shadow: -1px 0 var(--label-stroke-color), 0 1px var(--label-stroke-color),
+    1px 0 var(--label-stroke-color), 0 -1px var(--label-stroke-color);
+  position: absolute;
+  right: 25px;
+  top: 27px;
+  text-transform: lowercase;
+}
+
+.label-uppercase {
+  text-transform: uppercase;
+}
+
+@supports (-webkit-text-stroke: 1px var(--label-stroke-color)) or
+  (text-stroke: 1px var(--label-stroke-color)) {
+  .image-label {
+    text-shadow: none;
+    -webkit-text-stroke: 1px var(--label-stroke-color);
+    text-stroke: 1px var(--label-stroke-color);
+  }
+}
+
+/* image */
+
+.floppy-image {
+  inline-size: 21px;
+  block-size: 21px;
+  mix-blend-mode: difference;
+}
+
+.like-icon {
+  inline-size: 38px;
+  block-size: 40px;
+  fill: var(--text-color);
+  position: relative;
+  z-index: 1;
+}
+
+.like-icon .heart {
+  transform-origin: center;
+}
+
+.like-icon .contour {
+  fill: var(--text-color);
+  transition: fill 0.1s linear;
+}
+
+.like-icon .main-body {
+  fill: var(--page-background);
+  transition: fill 0.3s linear;
+}
+
+.like-icon .core {
+  fill: var(--page-background);
+  transition: fill 0.3s linear 0.03s;
+}
+
+.like-icon .sparks {
+  opacity: 0;
+  fill: var(--sparks-color);
+}
+
+.like-icon:hover .main-body {
+  fill: var(--text-color);
+  transition: fill 0.3s linear 0.05s;
+}
+
+.like-icon:hover .core {
+  fill: var(--text-color);
+  transition: fill 0.3s linear;
+}
+
+.like-icon:active .main-body {
+  fill: var(--sparks-color);
+}
+
+.like-icon:active .core {
+  fill: var(--sparks-color);
+}
+
+.like-icon.is-liked .contour {
+  fill: var(--sparks-color);
+  transition: fill 0.3s linear 0.06s;
+}
+
+.like-icon.is-liked .main-body {
+  fill: var(--sparks-color);
+  transition: fill 0.3s linear 0.05s;
+}
+
+.like-icon.is-liked .core {
+  fill: var(--sparks-color);
+  transition: fill 0.3s linear;
+}
+
+/* filters */
+
+.filter__grayscale {
+  filter: grayscale(60%);
+}
+
+.filter__saturate {
+  filter: saturate(360%);
+}
+
+.filter__hue-rotate {
+  filter: hue-rotate(50deg);
+}
+
+.filter__invert {
+  filter: invert(80%);
+}
+
+.filter__sepia {
+  filter: sepia(90%);
+}
+
+.filter__blur {
+  filter: blur(15px);
+}
+
+.filter__multi {
+  filter: saturate(200%) blur(1px) hue-rotate(100deg) invert(20%);
+}
+
+/* button */
+
+.button {
+  font-family: var(--accent-font-family);
+  font-size: 14px;
+  position: relative;
+  overflow: hidden;
+  color: var(--mix-blend-color);
+  background: none;
+  border: 2px solid var(--stroke-color);
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  overflow: hidden;
+  background: var(--text-color);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-in-out;
+}
+
+.button:hover::before {
+  transform: translateX(0);
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  box-shadow: 2px 2px 0px 0px var(--text-color);
+}
+
+.button__text {
+  color: var(--mix-blend-color);
+  mix-blend-mode: difference;
+}
+
+.button-save {
+  inline-size: 338px;
+  block-size: 51px;
+  padding: 18.5px 21px;
+  margin: 0 auto;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  background: var(--page-background);
+}
+
+.button-confirm {
+  text-transform: uppercase;
+  inline-size: 100%;
+  padding: 10px 0;
+  background: var(--page-background);
+}
+
+/* cards */
+
+.card {
+  border: 2px solid var(--stroke-color);
+  background: var(--header-background);
+}
+
+.card__title {
+  font-size: 18px;
+  font-variation-settings: var(--title-font-weight);
+  padding: 3.5px 10px 5.5px 10px;
+  line-height: 22.78px;
+  text-align: left;
+}
+
+.card__image {
+  display: block;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center;
+  object-position: center;
+  inline-size: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.card__image-item {
+  overflow: hidden;
+  position: relative;
+  border-top: 2px solid var(--stroke-color);
+  border-bottom: 2px solid var(--stroke-color);
+}
+
+.card__text-item {
+  padding: 25px 25px 0px 25px;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+  line-height: 21px;
+}
+
+.card__icon-button {
+  padding: 0;
+  block-size: 38px;
+  background: transparent;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+  border: 2px solid transparent;
+  appearance: none;
+}
+
+.card__icon-button:focus {
+  outline: none;
+}
+
+.card__icon-button:focus-visible {
+  border-color: var(--stroke-color);
+}
+
+.card__like-button {
+  inline-size: 130px;
+  block-size: 38px;
+}
+
+.card__like-button-item {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 5px;
+  padding: 25px;
+}
+
+/* footer-button */
+
+.footer-button {
+  margin-block-start: 52px;
+  padding-block-end: 103px;
+}
+
+.dialog {
+  font-family: var(--accent-font-family);
+  font-size: 14px;
+  padding: 30px 26px;
+  color: var(--text-color);
+  background: var(--page-background);
+  border: 2px solid var(--stroke-color);
+}
+
+.dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.dialog:not([open]) {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.dialog .floppy-image {
+  inline-size: 39px;
+  block-size: 39px;
+  mix-blend-mode: normal;
+}
+
+.dialog__item {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.dialog__text {
+  text-transform: uppercase;
+  line-height: 1.5;
+  max-inline-size: 234px;
+  inline-size: 100%;
+}
+
+.dialog__text-item {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+}
+
+/* @media <= 375px */
+
+@media (width <= 376px) {
+  .image-label {
+    right: 10px;
+    top: 19px;
+  }
+
+  .floppy-image {
+    inline-size: 28px;
+    block-size: 28px;
+  }
+
+  .button-save {
+    inline-size: auto;
+    block-size: auto;
+    flex-direction: column;
+  }
+
+  .header {
+    padding: 120px 0 25px;
+  }
+
+  .theme-menu__list {
+    margin: 0 41.1%;
+  }
+
+  .dialog__item {
+    gap: 28px;
+  }
+
+  .dialog__text {
+    inline-size: 80%;
+  }
+
+  .dialog {
+    padding: 32px 38px;
+  }
 }
